@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .font-teko {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .font-rajdhani {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .font-inter {
+    font-family: 'Work Sans', sans-serif;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0B;
+  color: #C7C9CE;
+  font-family: 'Work Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #131315;
+}
+::-webkit-scrollbar-thumb {
+  background: #E31E24;
+  border-radius: 4px;
+}
+
+.container-x {
+  @apply max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12;
+}
+
+.eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  @apply font-semibold tracking-[0.25em] text-primary text-xs sm:text-sm uppercase;
+}
+
+.section-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  @apply font-semibold text-heading uppercase leading-[0.95] text-4xl sm:text-5xl lg:text-6xl;
+}
+
+.btn-primary {
+  font-family: 'Barlow Condensed', sans-serif;
+  @apply inline-flex items-center gap-2 bg-primary text-white font-bold uppercase tracking-wide px-7 py-3 rounded-md hover:bg-primaryDark transition-all duration-300 hover:shadow-glow;
+}
+
+.btn-secondary {
+  font-family: 'Barlow Condensed', sans-serif;
+  @apply inline-flex items-center gap-2 bg-transparent border border-secondary/60 text-offwhite font-bold uppercase tracking-wide px-7 py-3 rounded-md hover:border-primary hover:text-primary transition-all duration-300;
+}
+
+.card-dark {
+  @apply bg-surface border border-white/10 rounded-lg;
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.in-view {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.clip-diagonal {
+  clip-path: polygon(6% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+@media (min-width: 640px) {
+  .clip-diagonal {
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
