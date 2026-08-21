@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
           <div className="relative h-full flex flex-col justify-center p-7 sm:p-10 gap-2 max-w-sm">
-            <span className="font-teko text-5xl sm:text-6xl font-bold text-primary leading-none">
+            <span className="font-teko text-5xl sm:text-3xl lg:text-5xl xl:text-5xl md:text-5xl font-bold text-primary leading-none">
               8,500+
             </span>
             <p className="font-rajdhani text-sm uppercase tracking-[0.15em] text-heading/90">
