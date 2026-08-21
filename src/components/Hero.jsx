@@ -26,93 +26,86 @@ export default function Hero() {
         @media (prefers-reduced-motion: reduce) { .yfc-ticker-track { animation: none; } }
       `}</style>
 
-      <div className="grid lg:grid-cols-2 min-h-[640px] lg:min-h-[760px]">
-        {/* Left: content panel on plain surface */}
-        <div className="relative flex items-center order-2 lg:order-1 pt-10 lg:pt-16 pb-14 lg:pb-16">
-          <div className="container-x lg:pl-12 lg:pr-10 xl:pl-16">
-            <div className="flex flex-col gap-5 sm:gap-6 max-w-xl">
-              <span
-                className={`eyebrow transition-all duration-700 ${
-                  loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
-                }`}
-              >
-                Force Fitness Gym &amp; Spa · Gaur City 2
-              </span>
+      <div className="relative min-h-[620px] sm:min-h-[720px] lg:min-h-[820px] flex items-center">
+        <img
+          src="/banner3.png"
+          alt="Force Fitness Gym & Spa training floor"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/60 to-transparent lg:to-bg/5" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg/50 via-transparent to-transparent" />
 
-              <h1
-                className={`font-teko font-black uppercase leading-[0.92] text-5xl xs:text-6xl sm:text-7xl lg:text-6xl xl:text-7xl text-heading transition-all duration-700 delay-100 ${
-                  loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
-                Train Hard.
-                <br />
-                <span className="text-primary">Recover</span> Harder.
-              </h1>
+        {/* pinned to true left edge, no centered container */}
+        <div className="relative w-full pl-6 xs:pl-8 sm:pl-12 lg:pl-20 xl:pl-12 pr-6 -mt-20">
+          <div className="flex flex-col gap-5 sm:gap-6 max-w-xl text-left">
+            <span
+              className={`eyebrow transition-all duration-700 ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+            >
+              Force Fitness Gym · Gaur City 2
+            </span>
 
-              <p
-                className={`font-inter text-body text-sm sm:text-base max-w-md transition-all duration-700 delay-200 ${
-                  loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              >
-                One roof, two missions: a fully equipped strength floor and a
-                full-service recovery spa in the heart of Gaur City 2, Noida.
-                Steam, sauna, ice bath and massage — all included.
-              </p>
+            <h1
+              className={`font-teko font-black uppercase leading-[0.92] text-5xl xs:text-6xl sm:text-7xl lg:text-7xl text-heading transition-all duration-700 delay-100 ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
+              Train Hard.
+              <br />
+              <span className="text-primary">Recover</span> Harder.
+            </h1>
 
-              <div
-                className={`flex flex-col xs:flex-row gap-3 xs:gap-4 w-full xs:w-auto transition-all duration-700 delay-300 ${
-                  loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              >
-                <Link
-                  to="/membership"
-                  className="group inline-flex items-center justify-center gap-2 bg-primary hover:opacity-90 text-white font-rajdhani font-bold uppercase text-sm tracking-wide px-7 py-4 transition w-full xs:w-auto"
-                >
-                  Start Training
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  to="/gallery"
-                  className="group inline-flex items-center justify-center gap-2 border border-white/25 hover:border-primary hover:text-primary text-heading font-rajdhani font-bold uppercase text-sm tracking-wide px-7 py-4 transition-colors w-full xs:w-auto"
-                >
-                  <Play size={14} /> Take A Look Inside
-                </Link>
-              </div>
+            <p
+              className={`font-inter text-body text-sm sm:text-base max-w-md transition-all duration-700 delay-200 ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              One roof, two missions: a fully equipped strength floor and a
+              full-service recovery spa in the heart of Gaur City 2, Noida.
+              Steam, sauna, ice bath and massage — all included.
+            </p>
 
-              {/* quick stat row */}
-              <div
-                className={`grid grid-cols-3 gap-4 sm:gap-6 pt-6 mt-1 border-t border-white/10 transition-all duration-700 delay-500 ${
-                  loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
+            <div
+              className={`flex flex-col xs:flex-row gap-3 xs:gap-4 w-full xs:w-auto transition-all duration-700 delay-300 ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              <Link
+                to="/membership"
+                className="group inline-flex items-center justify-center gap-2 bg-primary hover:opacity-90 text-white font-rajdhani font-bold uppercase text-sm tracking-wide px-7 py-4 transition w-full xs:w-auto"
               >
-                {quickStats.map((s) => (
-                  <div key={s.label} className="flex flex-col">
-                    <span className="font-teko text-2xl sm:text-4xl font-bold text-heading tabular-nums leading-none">
-                      {s.number}
-                    </span>
-                    <span className="font-rajdhani text-[9px] xs:text-[10px] uppercase tracking-[0.1em] text-muted mt-1.5">
-                      {s.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+                Start Training
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/gallery"
+                className="group inline-flex items-center justify-center gap-2 border border-white/25 hover:border-primary hover:text-primary text-heading font-rajdhani font-bold uppercase text-sm tracking-wide px-7 py-4 transition-colors w-full xs:w-auto"
+              >
+                <Play size={14} /> Take A Look Inside
+              </Link>
+            </div>
+
+            <div
+              className={`grid grid-cols-3 gap-4 sm:gap-6 pt-6 mt-1 border-t border-white/10 transition-all duration-700 delay-500 ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              {quickStats.map((s) => (
+                <div key={s.label} className="flex flex-col">
+                  <span className="font-teko text-2xl sm:text-4xl font-bold text-heading tabular-nums leading-none">
+                    {s.number}
+                  </span>
+                  <span className="font-rajdhani text-[9px] xs:text-[10px] uppercase tracking-[0.1em] text-muted mt-1.5">
+                    {s.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-
-        {/* Right: full-height image panel */}
-        <div className="relative order-1 lg:order-2 h-[300px] sm:h-[420px] lg:h-auto">
-          <img
-            src="/HomeBanner.png"
-            alt="Force Fitness Gym & Spa training floor"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/10 to-transparent lg:bg-gradient-to-l" />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent lg:hidden" />
-        </div>
       </div>
 
-      {/* full-bleed ticker strip */}
       <div className="relative border-y border-white/10 bg-primary overflow-hidden">
         <div className="flex whitespace-nowrap py-2.5 xs:py-3 sm:py-3.5 yfc-ticker-track w-max">
           {[...tickerWords, ...tickerWords, ...tickerWords].map((w, i) => (

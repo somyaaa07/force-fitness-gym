@@ -50,7 +50,7 @@ export default function About() {
                   Founder's Note
                 </p>
                 <p className="font-inter text-xs text-muted mt-0.5">
-                  Force Fitness Gym & Spa, Gaur City 2, Noida
+                  Force Fitness Gym , Gaur City 2, Noida
                 </p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function About() {
               Built for those <span className="text-primary">who put in the work</span>
             </p>
             <p className="font-inter text-body text-sm sm:text-base max-w-xl">
-              Force Fitness Gym & Spa opened in Gaur City 2 with one simple
+              Force Fitness Gym  opened in Gaur City 2 with one simple
               rule — every program has to earn its place. That's still how
               we run things: real coaching, honest programming, and a
               recovery spa on-site so the work you put in on the floor

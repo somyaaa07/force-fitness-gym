@@ -1,4 +1,11 @@
-import { ClipboardList, Dumbbell, TrendingUp, MessageCircleHeart } from "lucide-react";
+import {
+  ClipboardList,
+  Dumbbell,
+  TrendingUp,
+  MessageCircleHeart,
+  ArrowRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 import CTASection from "../components/CTASection";
@@ -39,14 +46,14 @@ export default function Services() {
         title="What We "
         highlight="Offer"
         description="From one-on-one coaching to corporate wellness plans — every service here is run by a certified professional and built around results, not upsells."
-        image="/servicebanner.png"
+        image="/servicebanner2.png"
         primaryBtnText="Contact Us"
         primaryBtnLink="/contact"
         secondaryBtnText="View Membership"
         secondaryBtnLink="/membership"
       />
 
-      {/* Services list — alternating rows */}
+      {/* Services list — alternating rows, each one now actionable */}
       <section className="py-16 sm:py-24">
         <div className="container-x">
           <SectionHeading
@@ -61,17 +68,11 @@ export default function Services() {
             {services.map((s, i) => (
               <div
                 key={s.title}
-                className={`group grid sm:grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-8 card-dark p-6 sm:p-8 hover:border-primary/50 transition-all duration-300 ${
+                className={`group grid sm:grid-cols-[auto_1fr_auto] items-center gap-4 sm:gap-8 card-dark p-6 sm:p-8 hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-300 ${
                   i % 2 === 1 ? "sm:bg-white/[0.015]" : ""
                 }`}
               >
-                <div
-                  className="w-16 h-16 shrink-0 flex items-center justify-center bg-primary/10 group-hover:bg-primary transition-colors duration-300"
-                  style={{
-                    clipPath:
-                      "polygon(25% 2%, 75% 2%, 98% 50%, 75% 98%, 25% 98%, 2% 50%)",
-                  }}
-                >
+                <div className="w-16 h-16 shrink-0 rounded-full flex items-center justify-center bg-primary/10 group-hover:bg-primary transition-colors duration-300">
                   <s.icon
                     size={26}
                     strokeWidth={1.75}
@@ -88,16 +89,32 @@ export default function Services() {
                   </p>
                 </div>
 
-                <span className="hidden sm:block font-teko text-5xl text-white/5 group-hover:text-primary/20 transition-colors duration-300 justify-self-end">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                <Link
+                  to="/contact"
+                  className="hidden sm:inline-flex items-center gap-1.5 shrink-0 justify-self-end font-rajdhani font-bold uppercase text-xs tracking-wide text-primary border border-primary/30 rounded-full px-4 py-2.5 hover:bg-primary hover:text-black transition-colors duration-300"
+                >
+                  Get Started
+                  <ArrowRight
+                    size={14}
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
+                </Link>
+
+                {/* mobile-only equivalent, since the grid's third column is hidden below sm */}
+                <Link
+                  to="/contact"
+                  className="sm:hidden inline-flex items-center justify-center gap-1.5 font-rajdhani font-bold uppercase text-xs tracking-wide text-primary border border-primary/30 rounded-full px-4 py-2.5 w-full"
+                >
+                  Get Started
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How it works — a real connected timeline, not 4 disconnected cards */}
       <section className="py-16 sm:py-24 bg-surface2">
         <div className="container-x">
           <SectionHeading
@@ -105,25 +122,31 @@ export default function Services() {
             title="Getting Started Is"
             highlight="Simple"
             align="center"
-            className="mb-16"
+            className="mb-16 sm:mb-20"
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 sm:gap-8">
+            {/* connecting line — only reads correctly once all 4 steps share one row */}
+            <div className="hidden lg:block absolute top-6 left-[12.5%] right-[12.5%] h-px bg-white/10" />
+
             {process.map((step, i) => (
-              <div key={step.title} className="relative flex flex-col gap-4">
-                <div className="flex items-center gap-4">
-                  <span className="font-teko text-4xl font-bold text-primary leading-none">
-                    {String(i + 1).padStart(2, "0")}
+              <div
+                key={step.title}
+                className="relative flex flex-col items-center text-center gap-4"
+              >
+                <div className="relative">
+                  <div className="w-12 h-12 rounded-full bg-surface2 border border-primary/40 flex items-center justify-center text-primary">
+                    <step.icon size={20} strokeWidth={1.75} />
+                  </div>
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-black text-[11px] font-bold font-teko flex items-center justify-center">
+                    {i + 1}
                   </span>
-                  <div className="h-px flex-1 bg-white/10" />
                 </div>
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 border border-primary/40 text-primary">
-                  <step.icon size={20} strokeWidth={1.75} />
-                </div>
+
                 <h3 className="font-teko text-xl font-semibold uppercase text-heading leading-none">
                   {step.title}
                 </h3>
-                <p className="font-inter text-sm text-body leading-relaxed">
+                <p className="font-inter text-sm text-body leading-relaxed max-w-[240px]">
                   {step.description}
                 </p>
               </div>

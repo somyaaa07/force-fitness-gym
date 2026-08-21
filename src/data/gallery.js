@@ -9,7 +9,7 @@ export const galleryImages = [
   { id: 8, category: "Members", src: "https://i.pinimg.com/1200x/3f/1f/d4/3f1fd4c5f3399b251f5bd172e34b06e9.jpg", alt: "Member training" },
   { id: 9, category: "Gym", src: "https://i.pinimg.com/1200x/6d/85/9a/6d859a9a23f76dae53189c3ca7130d7f.jpg", alt: "Gym floor" },
   { id: 10, category: "Training", src: "https://i.pinimg.com/736x/25/97/dd/2597ddde4b9907f346f82a77a3b6e27b.jpg", alt: "HIIT session" },
-  // { id: 11, category: "Equipment", src: "https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?q=80&w=900&auto=format&fit=crop", alt: "Equipment closeup" },
+  { id: 11, category: "Equipment", src: "https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?q=80&w=900&auto=format&fit=crop", alt: "Equipment closeup" },
   { id: 12, category: "Members", src: "https://i.pinimg.com/736x/48/c9/f3/48c9f3a6cd85556e84630faa1be7052e.jpg", alt: "Member with coach" },
 ];
 

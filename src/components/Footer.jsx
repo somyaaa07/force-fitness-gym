@@ -124,7 +124,7 @@ export default function Footer() {
 
       <div className="container-x py-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="font-inter text-xs text-muted text-center sm:text-left">
-          &copy; {new Date().getFullYear()} Force Fitness Gym &amp; Spa. All rights reserved.
+          &copy; {new Date().getFullYear()} Force Fitness Gym . All rights reserved.
         </p>
         <p className="font-rajdhani text-xs uppercase tracking-[0.15em] text-muted">
           Train Hard Today · Recover Better Tomorrow

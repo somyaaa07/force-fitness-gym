@@ -44,14 +44,14 @@ export default function Navbar() {
         <nav className={`container-x flex items-center justify-between transition-all duration-300 ${scrolled ? "py-2.5" : "py-4"}`}>
           <Logo />
 
-          <ul className="hidden lg:flex items-center gap-0.5">
+          <ul className="hidden lg:flex items-center gap-0.2">
             {navLinks.map((link) => (
               <li key={link.to}>
                 <NavLink
                   to={link.to}
                   end={link.to === "/"}
                   className={({ isActive }) =>
-                    `group relative flex items-center px-3.5 py-2 font-rajdhani font-semibold uppercase tracking-wide text-[13px] transition-colors duration-300 ${
+                    `group relative flex items-center px-3.5 py-2 font-rajdhani font-semibold uppercase tracking-wide xl:text-[15px] lg:text-[11px] transition-colors duration-300 ${
                       isActive ? "text-primary" : "text-offwhite/80 hover:text-white"
                     }`
                   }

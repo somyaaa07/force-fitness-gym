@@ -1,7 +1,8 @@
 import { useMemo, useRef, useEffect, useState } from "react";
-import { Camera, ArrowRight } from "lucide-react";
+import { Camera, ArrowRight, Images } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
+import SectionHeading from "../components/SectionHeading";
 import GalleryCard from "../components/GalleryCard";
 import Lightbox from "../components/Lightbox";
 import { galleryImages, galleryCategories } from "../data/gallery";
@@ -36,7 +37,6 @@ function CategoryTabs({ categories, active, setActive, counts }) {
     return () => window.removeEventListener("resize", updateIndicator);
   }, [active, categories]);
 
-
   return (
     <div className="w-full max-w-full overflow-x-auto sm:overflow-visible sm:flex sm:justify-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <div
@@ -70,14 +70,18 @@ function CategoryTabs({ categories, active, setActive, counts }) {
   );
 }
 
-// Bento span pattern — every 7th tile gets more room so the grid never feels flat.
+// Bento span pattern — a longer, less predictable cycle so large tiles
+// don't fall into an obvious repeating rhythm as the grid grows.
 const spanPattern = [
   "sm:col-span-2 sm:row-span-2",
   "",
+  "sm:row-span-2",
+  "",
+  "",
+  "sm:col-span-2",
   "",
   "sm:row-span-2",
   "",
-  "sm:col-span-2",
   "",
 ];
 
@@ -116,7 +120,7 @@ export default function Gallery() {
         title="Inside The"
         highlight="Floor"
         description="A closer look at the training floor, the recovery spa, and the members who show up for both — this is what a session here actually looks like."
-        image="/GalleryBanner1.png"
+        image="/gallerybanner3.png"
         primaryBtnText="Start Your Journey"
         primaryBtnLink="/contact"
         secondaryBtnText="Discover Our Story"
@@ -125,40 +129,60 @@ export default function Gallery() {
 
       <section className="py-10 sm:py-16 md:py-24">
         <div className="container-x px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-            <CategoryTabs
-              categories={galleryCategories}
-              active={active}
-              setActive={setActive}
-              counts={counts}
-            />
-            <p className="font-rajdhani text-xs uppercase tracking-wide text-muted text-center flex items-center gap-2">
-              <Camera size={14} className="text-primary" />
-              Showing {filtered.length} of {galleryImages.length} photos
-            </p>
+          <SectionHeading
+            eyebrow="Browse The Gallery"
+            title="Every Corner,"
+            highlight="Every Session"
+            align="center"
+            className="mb-8 sm:mb-10"
+          />
+
+          {/* Sticky filter bar — stays reachable as members scroll a long set of photos */}
+          <div className="top-16 z-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 mb-8 sm:mb-10 bg-bg/80 backdrop-blur-md">
+            <div className="flex flex-col items-center gap-3">
+              <CategoryTabs
+                categories={galleryCategories}
+                active={active}
+                setActive={setActive}
+                counts={counts}
+              />
+              <p className="font-rajdhani text-xs uppercase tracking-wide text-muted text-center flex items-center gap-2">
+                <Camera size={14} className="text-primary" />
+                Showing {filtered.length} of {galleryImages.length} photos
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 auto-rows-[130px] xs:auto-rows-[150px] sm:auto-rows-[190px] md:auto-rows-[200px] lg:auto-rows-[210px] xl:auto-rows-[220px] gap-3 sm:gap-4 lg:gap-5 grid-flow-dense">
-            {filtered.map((image, i) => (
-              <div
-                key={image.id}
-                className={`animate-fadeIn ${spanPattern[i % spanPattern.length]}`}
-              >
-                <GalleryCard
-                  image={image}
-                  onClick={() => openLightbox(i)}
-                  className="h-full"
-                />
-              </div>
-            ))}
-          </div>
+          {filtered.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 auto-rows-[130px] xs:auto-rows-[150px] sm:auto-rows-[190px] md:auto-rows-[200px] lg:auto-rows-[210px] xl:auto-rows-[220px] gap-3 sm:gap-4 lg:gap-5 grid-flow-dense">
+              {filtered.map((image, i) => (
+                <div
+                  key={image.id}
+                  className={`animate-fadeIn opacity-0 ${spanPattern[i % spanPattern.length]}`}
+                  style={{
+                    animationDelay: `${Math.min(i, 12) * 60}ms`,
+                    animationFillMode: "forwards",
+                  }}
+                >
+                  <GalleryCard
+                    image={image}
+                    onClick={() => openLightbox(i)}
+                    className="h-full"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
 
           {filtered.length === 0 && (
-            <div className="flex flex-col items-center gap-3 py-12 sm:py-16 px-4 text-center">
+            <div className="flex flex-col items-center gap-3 py-16 sm:py-20 px-4 text-center border border-dashed border-white/10 rounded-2xl">
+              <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-muted mb-1">
+                <Images size={22} />
+              </div>
               <p className="font-teko text-2xl sm:text-3xl text-heading uppercase">
                 No Photos Found
               </p>
-              <p className="text-center text-muted font-inter text-sm">
+              <p className="text-center text-muted font-inter text-sm max-w-xs">
                 Try a different category to see more of the gym.
               </p>
               <button
@@ -177,6 +201,7 @@ export default function Gallery() {
         <div className="container-x px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface px-6 sm:px-10 lg:px-14 py-8 sm:py-10 lg:py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="absolute -left-10 -top-10 w-48 h-48 rounded-full bg-primary/10 blur-3xl" />
+            <div className="absolute -right-16 -bottom-16 w-56 h-56 rounded-full bg-primary/5 blur-3xl" />
             <div className="relative text-center sm:text-left">
               <h3 className="font-teko text-2xl sm:text-3xl lg:text-4xl font-semibold uppercase text-heading leading-none">
                 See It <span className="text-primary">In Person</span>

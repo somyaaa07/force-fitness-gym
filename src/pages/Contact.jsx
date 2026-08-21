@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, Plus, Minus, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Plus, Minus, MessageCircle, ArrowRight } from "lucide-react";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 
-const contactInfo = [
+const contactRail = [
   {
     icon: MapPin,
     label: "Location",
-    value: "1st Floor, Prem Complex, Opposite Gaur City 2, Near Shanti Market, Sector 52, Noida, Uttar Pradesh 201301",
+    value: "1st Floor, Prem Complex, Opposite Gaur City 2, Sector 52, Noida 201301",
   },
   {
     icon: Phone,
@@ -21,7 +21,7 @@ const contactInfo = [
     value: "hello@forcefitnessgym.in",
     href: "mailto:hello@forcefitnessgym.in",
   },
-  { icon: Clock, label: "Opening Hours", value: "All Days: 5:00 AM - 11:00 PM" },
+  { icon: Clock, label: "Hours", value: "All Days: 5:00 AM – 11:00 PM" },
 ];
 
 const contactFaqs = [
@@ -31,7 +31,7 @@ const contactFaqs = [
   },
   {
     q: "Can I schedule a free trial or tour before joining?",
-    a: "Yes — use the form below or call us to book a walk-through of the gym and spa, plus a free trial session with one of our trainers.",
+    a: "Yes — use the form or call us to book a walk-through of the gym and spa, plus a free trial session with one of our trainers.",
   },
   {
     q: "Do you offer corporate or group memberships?",
@@ -130,7 +130,7 @@ export default function Contact() {
   return (
     <>
       <PageHero
-        image="/ContactBanner2.png"
+        image="/contactbanner3.png"
         eyebrow="Get In Touch"
         title="Let's "
         highlight="Talk"
@@ -141,82 +141,72 @@ export default function Contact() {
         secondaryBtnLink="/about"
       />
 
-      {/* Quick info strip */}
+      {/* Map + info rail / Form — form leads, map+info is the supporting column */}
       <section className="py-14 sm:py-20 bg-surface">
         <div className="container-x">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
-            {contactInfo.map((info) => {
-              const Content = (
-                <>
-                  <div className="w-11 h-11 shrink-0 flex items-center justify-center rounded-full bg-primary/15 border border-primary/50 text-primary">
-                    <info.icon size={20} strokeWidth={1.75} />
-                  </div>
-                  <div>
-                    <h3 className="font-rajdhani font-bold text-heading uppercase tracking-wide text-xs">
-                      {info.label}
-                    </h3>
-                    <p className="font-inter text-sm text-body mt-1 leading-snug">
-                      {info.value}
-                    </p>
-                  </div>
-                </>
-              );
-              return info.href ? (
-                <a
-                  key={info.label}
-                  href={info.href}
-                  className="card-dark flex items-start gap-4 p-6 hover:border-primary/50 transition-colors duration-300"
-                >
-                  {Content}
-                </a>
-              ) : (
-                <div key={info.label} className="card-dark flex items-start gap-4 p-6">
-                  {Content}
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12">
-            {/* Map */}
-            <div className="relative h-72 lg:h-full min-h-[320px] w-full overflow-hidden rounded-xl border border-white/10 bg-surface shadow-lg">
-              <iframe
-                className="absolute inset-0 h-full w-full border-0"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&q=Force%20Fitness%20Gym%20%26%20Spa%2C%20Prem%20Complex%2C%20Opposite%20Gaur%20City%202%2C%20Sector%2052%2C%20Noida%2C%20Uttar%20Pradesh%20201301&maptype=roadmap&zoom=16"
-                title="Force Fitness Gym & Spa Location"
-                allowFullScreen
-                loading="lazy"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center gap-3 rounded-lg border border-white/10 bg-black/60 px-4 py-3 text-white backdrop-blur-md">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/15">
-                  <MapPin size={20} className="text-primary" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold">Force Fitness Gym & Spa</p>
-                  <p className="truncate text-xs text-white/60">
-                    Opposite Gaur City 2, Sector 52, Noida 201301
-                  </p>
-                </div>
+          <div className="grid lg:grid-cols-[1fr_1.35fr] gap-10 lg:gap-12 items-start">
+            {/* Map + consolidated contact rail */}
+            <div className="flex flex-col gap-5 lg:sticky lg:top-28">
+              <div className="relative h-64 sm:h-62 w-full overflow-hidden rounded-xl border border-white/10 bg-black shadow-lg">
+                <iframe
+                  className="absolute inset-0 h-full w-full border-0"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&q=Force%20Fitness%20Gym%20%26%20Spa%2C%20Prem%20Complex%2C%20Opposite%20Gaur%20City%202%2C%20Sector%2052%2C%20Noida%2C%20Uttar%20Pradesh%20201301&maptype=roadmap&zoom=16"
+                  title="Force Fitness Gym & Spa Location"
+                  allowFullScreen
+                  loading="lazy"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               </div>
+
+              <div className="card-dark divide-y divide-white/10">
+                {contactRail.map((info) => {
+                  const Content = (
+                    <>
+                      <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-primary/15 border border-primary/50 text-primary">
+                        <info.icon size={18} strokeWidth={1.75} />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-rajdhani font-bold text-heading uppercase tracking-wide text-[11px]">
+                          {info.label}
+                        </h3>
+                        <p className="font-inter text-sm text-body mt-0.5 leading-snug">
+                          {info.value}
+                        </p>
+                      </div>
+                    </>
+                  );
+                  return info.href ? (
+                    <a
+                      key={info.label}
+                      href={info.href}
+                      className="flex items-center gap-4 px-5 py-4 hover:bg-white/[0.03] transition-colors duration-200 first:rounded-t-[10px] last:rounded-b-[10px]"
+                    >
+                      {Content}
+                    </a>
+                  ) : (
+                    <div key={info.label} className="flex items-center gap-4 px-5 py-4">
+                      {Content}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <a
+                href="https://wa.me/919876543210"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 font-rajdhani font-semibold text-sm uppercase tracking-wide text-primary border border-primary/40 rounded-md py-3 hover:bg-primary/10 transition-colors"
+              >
+                <MessageCircle size={16} />
+                Chat on WhatsApp
+              </a>
             </div>
 
-            {/* Form */}
+            {/* Form — primary focal point */}
             <form onSubmit={handleSubmit} className="card-dark p-8 flex flex-col gap-5">
-              <div className="flex items-center justify-between gap-4">
-                <h2 className="font-teko text-3xl font-semibold text-heading uppercase">
-                  Send Us A Message
-                </h2>
-                <a
-                  href="https://wa.me/919876543210"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hidden sm:flex items-center gap-2 font-rajdhani font-semibold text-xs uppercase tracking-wide text-primary hover:text-heading transition-colors"
-                >
-                  <MessageCircle size={16} />
-                  WhatsApp Us
-                </a>
-              </div>
+              <h2 className="font-teko text-3xl sm:text-4xl font-semibold text-heading uppercase">
+                Send Us A Message
+              </h2>
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-2">
@@ -289,7 +279,7 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  rows={7}
+                  rows={12}
                   required
                   value={form.message}
                   onChange={handleChange}
@@ -325,7 +315,7 @@ export default function Contact() {
           />
 
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-14 items-start">
-            {/* Side CTA panel */}
+            {/* Side CTA panel — no longer repeats phone/email/hours, points to one action */}
             <div className="relative rounded-2xl overflow-hidden border border-white/10 p-8 sm:p-10 flex flex-col gap-6 lg:sticky lg:top-28 bg-gradient-to-br from-surface to-black">
               <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/10 blur-3xl" />
               <div className="relative w-14 h-14 flex items-center justify-center rounded-xl border border-primary/40 bg-black/30 text-primary">
@@ -336,31 +326,18 @@ export default function Contact() {
                   Still Have <span className="text-primary">Questions?</span>
                 </h3>
                 <p className="font-inter text-sm text-body">
-                  Can't find what you're looking for? Reach out directly and our
-                  team will get back to you right away.
+                  Skip the form and book a free trial session directly — walk the
+                  floor, meet a trainer, no commitment.
                 </p>
               </div>
 
-              <div className="relative flex flex-col gap-3 pt-2 border-t border-white/10">
-                <a
-                  href="tel:+919876543210"
-                  className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body hover:text-primary transition-colors duration-300"
-                >
-                  <Phone size={16} className="text-primary shrink-0" />
-                  +91 98765 43210
-                </a>
-                <a
-                  href="mailto:hello@forcefitnessgym.in"
-                  className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body hover:text-primary transition-colors duration-300"
-                >
-                  <Mail size={16} className="text-primary shrink-0" />
-                  hello@forcefitnessgym.in
-                </a>
-                <div className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body">
-                  <Clock size={16} className="text-primary shrink-0" />
-                  All Days: 5:00 AM - 11:00 PM
-                </div>
-              </div>
+              <a
+                href="tel:+919876543210"
+                className="relative flex items-center justify-center gap-2 font-rajdhani font-semibold text-sm uppercase tracking-wide text-white bg-primary rounded-md py-3 hover:brightness-110 transition-all group"
+              >
+                Book A Free Trial
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
 
             {/* FAQ list */}
