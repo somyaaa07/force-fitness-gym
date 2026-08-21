@@ -116,9 +116,9 @@ export default function Footer() {
             <span>Sunday</span>
             <span className="text-heading">6:00 AM – 9:00 PM</span>
           </div>
-          <p className="font-teko text-xl font-semibold text-primary leading-none mt-1">
+          {/* <p className="font-teko text-xl font-semibold text-primary leading-none mt-1">
             Spa open till last member leaves
-          </p>
+          </p> */}
         </div>
       </div>
 
