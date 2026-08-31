@@ -23,7 +23,7 @@ export default function TrainersPreview() {
           className="mb-14"
         />
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 w-full">
           {featured.map((trainer, i) => (
             <div key={trainer.id} className={i % 2 === 1 ? "lg:mt-10" : ""}>
               <TrainerCard trainer={trainer} index={i} />

@@ -2,7 +2,7 @@ import { Target, Eye, Building2, ArrowUpRight } from "lucide-react";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 import CTASection from "../components/CTASection";
-
+import Founders from "../components/Founders";
 const pillars = [
   {
     icon: Target,
@@ -172,6 +172,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <Founders />
 
       {/* Facilities */}
       <section className="py-16 sm:py-24">
