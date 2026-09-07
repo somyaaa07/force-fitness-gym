@@ -87,7 +87,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-muted font-inter">
             <li className="flex items-start gap-2.5">
               <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
-              1st Floor, Prem Complex, Opposite Gaur City 2, Near Shanti Market, Sector 52, Noida, Uttar Pradesh 201301
+             1St floor, Prem complex, opposite Gaur City 2 Road, near Shanti market, Rani Laxmibai Nagar, Yusufpur, Nai Basti Dundahera, Noida, Ghaziabad, Uttar Pradesh 201009
             </li>
             <li className="flex items-center gap-2.5">
               <Phone size={16} className="text-primary shrink-0" />
@@ -97,8 +97,8 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2.5">
               <Mail size={16} className="text-primary shrink-0" />
-              <a href="mailto:hello@forcefitnessgym.in" className="hover:text-primary transition-colors">
-                hello@forcefitnessgym.in
+              <a href="mailto:forcefitness7171@gmail.com" className="hover:text-primary transition-colors">
+                forcefitness7171@gmail.com
               </a>
             </li>
           </ul>

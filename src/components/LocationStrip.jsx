@@ -5,7 +5,7 @@ const items = [
   {
     icon: MapPin,
     title: "Find Us",
-    body: "1st Floor, Prem Complex, Opposite Gaur City 2, Near Shanti Market, Sector 52, Noida",
+    body: "1St floor, Prem complex, opposite Gaur City 2 Road, near Shanti market, Rani Laxmibai Nagar, Yusufpur, Nai Basti Dundahera, Noida, Ghaziabad, Uttar Pradesh 201009",
   },
   {
     icon: Clock,

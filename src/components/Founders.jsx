@@ -7,7 +7,7 @@ const founders = [
   },
   {
     name: "Sachin Tiwari",
-    role: "Co-Founder & Head Coach",
+    role: "Co-Founder & Opeartion-Head",
   },
   {
     name: "Harsh Yadav",

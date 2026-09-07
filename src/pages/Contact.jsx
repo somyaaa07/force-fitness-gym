@@ -7,19 +7,19 @@ const contactRail = [
   {
     icon: MapPin,
     label: "Location",
-    value: "1st Floor, Prem Complex, Opposite Gaur City 2, Sector 52, Noida 201301",
+    value: "1St floor, Prem complex, opposite Gaur City 2 Road, near Shanti market, Rani Laxmibai Nagar, Yusufpur, Nai Basti Dundahera, Noida, Ghaziabad, Uttar Pradesh 201009",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 98765 43210",
-    href: "tel:+919876543210",
+    value: "+91 93557 47171",
+    href: "tel:+919355747171",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "hello@forcefitnessgym.in",
-    href: "mailto:hello@forcefitnessgym.in",
+    value: "forcefitness7171@gmail.com",
+    href: "mailto:forcefitness7171@gmail.com",
   },
   { icon: Clock, label: "Hours", value: "All Days: 5:00 AM – 11:00 PM" },
 ];
@@ -192,7 +192,7 @@ export default function Contact() {
               </div>
 
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919355747171"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-center gap-2 font-rajdhani font-semibold text-sm uppercase tracking-wide text-primary border border-primary/40 rounded-md py-3 hover:bg-primary/10 transition-colors"
@@ -332,7 +332,7 @@ export default function Contact() {
               </div>
 
               <a
-                href="tel:+919876543210"
+                href="tel:+919355747171"
                 className="relative flex items-center justify-center gap-2 font-rajdhani font-semibold text-sm uppercase tracking-wide text-white bg-primary rounded-md py-3 hover:brightness-110 transition-all group"
               >
                 Book A Free Trial
