@@ -55,12 +55,16 @@ export default function MembershipPromoSection() {
             </div>
           </div>
 
-          {/* Right: banner image + copy */}
+          {/* Right: banner video + copy */}
           <div className="relative min-h-[320px] lg:min-h-[420px] p-8 sm:p-12 flex flex-col justify-end order-1 lg:order-2">
-            <img
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop"
-              alt="Force Fitness Gym & Spa training floor"
+            <video
               className="absolute inset-0 w-full h-full object-cover"
+              src="/4.MP4"
+              poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
 
@@ -69,10 +73,10 @@ export default function MembershipPromoSection() {
               <h2 className="section-heading">
                 Your Only Limit Is <span className="text-primary">You</span>
               </h2>
-              <p className="font-inter text-body text-sm max-w-sm">
+              {/* <p className="font-inter text-body text-sm max-w-sm">
                 Pick a plan that fits how you train — upgrade, downgrade or
                 freeze it anytime, no lock-in.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

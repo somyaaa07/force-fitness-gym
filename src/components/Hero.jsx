@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const quickStats = [
@@ -12,11 +12,28 @@ const tickerWords = ["STRENGTH", "RECOVERY", "GYM", "FITNESS", "NOIDA"];
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 80);
     return () => clearTimeout(t);
   }, []);
+
+  // Lock body scroll + allow Esc to close while modal is open
+  useEffect(() => {
+    if (!videoOpen) return;
+
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setVideoOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [videoOpen]);
 
   return (
     <section className="relative w-full bg-bg overflow-hidden">
@@ -85,12 +102,13 @@ export default function Hero() {
                 Start Training
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 shrink-0" />
               </Link>
-              <Link
-                to="/gallery"
+              <button
+                type="button"
+                onClick={() => setVideoOpen(true)}
                 className="group inline-flex items-center justify-center gap-2 border border-white/25 hover:border-primary hover:text-primary text-heading font-rajdhani font-bold uppercase text-xs xs:text-sm tracking-wide px-5 xs:px-7 py-3.5 xs:py-4 transition-colors w-full xs:w-auto"
               >
                 <Play size={14} className="shrink-0" /> Take A Look Inside
-              </Link>
+              </button>
             </div>
 
             <div
@@ -126,6 +144,36 @@ export default function Hero() {
           ))}
         </div>
       </div>
+
+      {/* Video modal */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 xs:p-6 sm:p-10 bg-black/90 backdrop-blur-sm"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl aspect-video bg-black border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setVideoOpen(false)}
+              aria-label="Close video"
+              className="absolute -top-10 right-0 xs:top-3 xs:right-3 z-10 flex items-center justify-center w-9 h-9 bg-white/10 hover:bg-primary text-white transition-colors"
+            >
+              <X size={18} />
+            </button>
+
+            <video
+              className="w-full h-full"
+              src="1.MP4"
+              controls
+              autoPlay
+              playsInline
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

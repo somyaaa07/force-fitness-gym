@@ -37,7 +37,7 @@ export default function Footer() {
           <Logo />
           <p className="font-inter text-sm text-muted max-w-xs">
             Where strength and relaxation converge — a full strength floor
-            paired with a recovery spa, right here in Gaur City 2.
+          right here in Gaur City 2.
           </p>
           <div className="flex items-center gap-3 mt-1">
             <a

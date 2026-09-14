@@ -1,5 +1,5 @@
 import { useMemo, useRef, useEffect, useState } from "react";
-import { Camera, ArrowRight, Images } from "lucide-react";
+import { Camera, ArrowRight, Images, Play, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
@@ -15,19 +15,13 @@ function CategoryTabs({ categories, active, setActive, counts }) {
     const updateIndicator = () => {
       const idx = categories.indexOf(active);
       const btn = containerRef.current?.children[idx + 1];
-      const scrollParent = containerRef.current?.parentElement; // the overflow-x-auto wrapper
+      const scrollParent = containerRef.current?.parentElement;
       if (btn) {
         setIndicator({ left: btn.offsetLeft, width: btn.offsetWidth });
-
-        // Horizontally center the active tab WITHOUT touching page (vertical) scroll.
-        // scrollIntoView() was the culprit — it can also scroll the whole window.
         if (scrollParent) {
           const targetLeft =
             btn.offsetLeft - scrollParent.clientWidth / 2 + btn.offsetWidth / 2;
-          scrollParent.scrollTo({
-            left: targetLeft,
-            behavior: "smooth",
-          });
+          scrollParent.scrollTo({ left: targetLeft, behavior: "smooth" });
         }
       }
     };
@@ -85,9 +79,95 @@ const spanPattern = [
   "",
 ];
 
+// Inline tile for video items — mirrors GalleryCard's look (rounded, hover
+// scale, overlay) but shows a poster + play icon instead of a static image.
+function VideoTile({ item, onClick, className = "" }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`group relative w-full h-full overflow-hidden rounded-xl border border-white/10 ${className}`}
+    >
+      <img
+        src={item.poster}
+        alt={item.alt}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary/90 text-white shadow-lg transition-transform group-hover:scale-110">
+          <Play size={20} fill="currentColor" className="ml-0.5" />
+        </span>
+      </div>
+      <span className="absolute bottom-2.5 left-2.5 font-rajdhani font-bold uppercase tracking-wide text-[10px] text-white bg-black/50 px-2 py-1 rounded">
+        Video
+      </span>
+    </button>
+  );
+}
+
+// Custom lightbox overlay for video items — kept separate from the existing
+// <Lightbox /> component (which expects images) so that component doesn't
+// need to be touched.
+function VideoLightbox({ item, onClose }) {
+  useEffect(() => {
+    if (!item) return; // don't lock scroll when there's nothing to show
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [item, onClose]);
+
+  if (!item) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 xs:p-6 sm:p-10 bg-black/90 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-4xl aspect-video bg-black border border-white/10 rounded-xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close video"
+          className="absolute -top-10 right-0 xs:top-3 xs:right-3 z-10 flex items-center justify-center w-9 h-9 bg-white/10 hover:bg-primary text-white transition-colors rounded"
+        >
+          <X size={18} />
+        </button>
+        <video
+          className="w-full h-full"
+          src={item.src}
+          poster={item.poster}
+          controls
+          autoPlay
+          playsInline
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function Gallery() {
   const [active, setActive] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [activeVideo, setActiveVideo] = useState(null);
+
+  // Safety net: no matter what state the lightbox/video modal thinks it's
+  // in, always restore body scroll when Gallery unmounts (e.g. route change
+  // while a modal was open) so scroll never stays stuck.
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   const counts = useMemo(() => {
     const c = { All: galleryImages.length };
@@ -107,11 +187,26 @@ export default function Gallery() {
     [active]
   );
 
-  const openLightbox = (i) => setLightboxIndex(i);
+  // Only photo items go through the existing image Lightbox — its index
+  // must be computed against the photo-only subset, not the mixed array.
+  const photoItems = useMemo(
+    () => filtered.filter((img) => img.type !== "video"),
+    [filtered]
+  );
+
+  const openItem = (item) => {
+    if (item.type === "video") {
+      setActiveVideo(item);
+    } else {
+      const photoIdx = photoItems.findIndex((p) => p.id === item.id);
+      setLightboxIndex(photoIdx);
+    }
+  };
+
   const closeLightbox = () => setLightboxIndex(null);
-  const nextImage = () => setLightboxIndex((i) => (i + 1) % filtered.length);
+  const nextImage = () => setLightboxIndex((i) => (i + 1) % photoItems.length);
   const prevImage = () =>
-    setLightboxIndex((i) => (i - 1 + filtered.length) % filtered.length);
+    setLightboxIndex((i) => (i - 1 + photoItems.length) % photoItems.length);
 
   return (
     <>
@@ -137,8 +232,9 @@ export default function Gallery() {
             className="mb-8 sm:mb-10"
           />
 
-          {/* Sticky filter bar — stays reachable as members scroll a long set of photos */}
-          <div className="top-16 z-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 mb-8 sm:mb-10 bg-bg/80 backdrop-blur-md">
+          {/* Sticky filter bar — `sticky` was missing before, which could
+              interfere with expected scroll/layout behavior on some browsers */}
+          <div className="sticky top-16 z-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 mb-8 sm:mb-10 bg-bg/80 backdrop-blur-md">
             <div className="flex flex-col items-center gap-3">
               <CategoryTabs
                 categories={galleryCategories}
@@ -148,27 +244,35 @@ export default function Gallery() {
               />
               <p className="font-rajdhani text-xs uppercase tracking-wide text-muted text-center flex items-center gap-2">
                 <Camera size={14} className="text-primary" />
-                Showing {filtered.length} of {galleryImages.length} photos
+                Showing {filtered.length} of {galleryImages.length} items
               </p>
             </div>
           </div>
 
           {filtered.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 auto-rows-[130px] xs:auto-rows-[150px] sm:auto-rows-[190px] md:auto-rows-[200px] lg:auto-rows-[210px] xl:auto-rows-[220px] gap-3 sm:gap-4 lg:gap-5 grid-flow-dense">
-              {filtered.map((image, i) => (
+              {filtered.map((item, i) => (
                 <div
-                  key={image.id}
+                  key={item.id}
                   className={`animate-fadeIn opacity-0 ${spanPattern[i % spanPattern.length]}`}
                   style={{
                     animationDelay: `${Math.min(i, 12) * 60}ms`,
                     animationFillMode: "forwards",
                   }}
                 >
-                  <GalleryCard
-                    image={image}
-                    onClick={() => openLightbox(i)}
-                    className="h-full"
-                  />
+                  {item.type === "video" ? (
+                    <VideoTile
+                      item={item}
+                      onClick={() => openItem(item)}
+                      className="h-full"
+                    />
+                  ) : (
+                    <GalleryCard
+                      image={item}
+                      onClick={() => openItem(item)}
+                      className="h-full"
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -222,12 +326,14 @@ export default function Gallery() {
       </section>
 
       <Lightbox
-        images={filtered}
+        images={photoItems}
         index={lightboxIndex}
         onClose={closeLightbox}
         onNext={nextImage}
         onPrev={prevImage}
       />
+
+      <VideoLightbox item={activeVideo} onClose={() => setActiveVideo(null)} />
     </>
   );
 }

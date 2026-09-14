@@ -6,10 +6,14 @@ export default function CTASection() {
       <div className="container-x">
         <div className="relative grid lg:grid-cols-2 rounded-2xl overflow-hidden border border-white/10">
           <div className="relative min-h-[320px] lg:min-h-[420px] order-2 lg:order-1">
-            <img
-              src="https://i.pinimg.com/736x/c6/6b/b5/c66bb51a170031065d442ee4a6985a9c.jpg"
-              alt="Luxury modern gym interior"
+            <video
               className="absolute inset-0 w-full h-full object-cover"
+              src="/1.MP4"
+              poster="https://i.pinimg.com/736x/c6/6b/b5/c66bb51a170031065d442ee4a6985a9c.jpg"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
             <div className="absolute inset-0 bg-gradient-to-l from-surface via-black/30 to-transparent lg:bg-gradient-to-l lg:from-surface lg:via-black/10 lg:to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />

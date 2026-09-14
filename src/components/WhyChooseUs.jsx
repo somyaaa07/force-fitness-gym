@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
         {/* full-width featured banner */}
         <div className="relative overflow-hidden border border-white/10 min-h-[240px] sm:min-h-[300px] mt-5 sm:mt-6 group">
           <img
-            src="https://i.pinimg.com/1200x/f1/5f/74/f15f74a6029b7a076c31da6bc6de4ad4.jpg"
+            src="/5.png"
             alt="Member training at Force Fitness Gym "
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />

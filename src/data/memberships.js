@@ -2,16 +2,16 @@ export const memberships = [
   {
     id: "basic",
     name: "Basic",
-    price: "₹999",
-    period: "/ month",
+    price: "₹6000",
+    period: " for 3 months",
     popular: false,
     features: ["Gym Access", "Basic Equipment", "1 Trainer Session / Month"],
   },
   {
     id: "premium",
-    name: "Premium",
-    price: "₹1499",
-    period: "/ month",
+    name: "Half-Yearly",
+    price: "₹11000",
+    period: " for 6 months",
     popular: true,
     features: [
       "Gym Access",
@@ -22,9 +22,9 @@ export const memberships = [
   },
   {
     id: "ultimate",
-    name: "Ultimate",
-    price: "₹1999",
-    period: "/ month",
+    name: "Yearly",
+    price: "16000",
+    period: " for 12 months",
     popular: false,
     features: [
       "Gym Access",

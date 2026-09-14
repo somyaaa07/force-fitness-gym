@@ -26,19 +26,19 @@ const facilities = [
     title: "Strength Zone",
     desc: "45+ workout stations across a full range of strength and cardio equipment.",
     image:
-      "https://i.pinimg.com/1200x/b5/07/dd/b507dd22388cf5c8a589d937e5250580.jpg",
+      "/12.jpeg",
   },
   {
     title: "Recovery Suite",
     desc: "Steam, sauna and ice bath therapy to help you recover faster between sessions.",
     image:
-      "https://i.pinimg.com/1200x/b6/1e/4c/b61e4c19d13c419be7cd2f3bc31f667d.jpg",
+      "/8.jpeg",
   },
   {
     title: "Wellness & Lounge",
     desc: "On-site physiotherapy, an in-house cafe and a lounge area to unwind after training.",
     image:
-      "https://i.pinimg.com/736x/a0/24/9b/a0249b22274c201a439d011b9168ef43.jpg",
+      "/13.jpeg",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function About() {
               /> */}
               <div className="relative aspect-[4/5] w-full overflow-hidden ">
                 <img
-                  src="https://i.pinimg.com/1200x/37/42/dc/3742dc4b31d2b7cd050256b51292c0f8.jpg"
+                  src="/7.jpeg"
                   alt="Trainer coaching a member at Force Fitness Gym"
                   className="w-full h-full object-cover"
                 />
