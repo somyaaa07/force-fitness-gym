@@ -21,7 +21,7 @@ const contactRail = [
     value: "forcefitness7171@gmail.com",
     href: "mailto:forcefitness7171@gmail.com",
   },
-  { icon: Clock, label: "Hours", value: "All Days: 5:00 AM – 11:00 PM" },
+  { icon: Clock, label: "Hours", value: "Mon to Sat: 5:00 AM – 11:00 PM Sun:7:00 AM – 2:00 PM" },
 ];
 
 const contactFaqs = [

@@ -114,7 +114,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center justify-between font-inter text-sm text-muted border-b border-white/10 pb-2">
             <span>Sunday</span>
-            <span className="text-heading">6:00 AM – 9:00 PM</span>
+            <span className="text-heading">7:00 AM – 2:00 PM</span>
           </div>
           {/* <p className="font-teko text-xl font-semibold text-primary leading-none mt-1">
             Spa open till last member leaves

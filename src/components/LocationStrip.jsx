@@ -10,7 +10,9 @@ const items = [
   {
     icon: Clock,
     title: "Open Daily",
-    body: "5:00 AM – 11:00 PM",
+    body: "Mon to Sat : 5:00 AM – 11:00 PM Sun : 5:00 AM – 10:00 PM",
+
+
   },
   {
     icon: Phone,

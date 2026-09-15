@@ -229,7 +229,7 @@ export default function Programs() {
                 >
                   <div className="overflow-hidden">
                     <div className="grid sm:grid-cols-[1fr_1.2fr] gap-6 sm:gap-10 pb-8 sm:pb-10 items-center">
-                      <div className="relative h-56 sm:h-72 overflow-hidden border border-white/10">
+                      <div className="relative h-96 sm:h-80 lg:h-[600px] overflow-hidden border border-white/10">
                         <img
                           src={program.image}
                           alt={program.title}

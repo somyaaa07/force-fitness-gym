@@ -48,7 +48,7 @@ export const programs = [
     longDescription:
       "Multi-directional strength and mobility work built for how your body actually moves — carrying, lifting, twisting, bracing — so gym strength shows up outside the gym too.",
     image:
-      "/13.jpeg",
+      "/funtional-strength.PNG",
     duration: "50 min",
     difficulty: "Intermediate",
     trainer: "Kabir Malhotra",
@@ -87,7 +87,7 @@ export const programs = [
     longDescription:
       "Fully individualized programming with hands-on form correction and week-to-week accountability — the fastest way to close the gap between where you are and where you want to be.",
     image:
-      "/17.jpeg",
+      "/1-0-1.PNG",
     duration: "60 min",
     difficulty: "All Levels",
     trainer: "Kabir Malhotra",
@@ -100,7 +100,7 @@ export const programs = [
     longDescription:
       "Guided mobility flows and breathwork sessions that undo a day at the desk, improve range of motion, and keep your joints ready for the next heavy session.",
     image:
-      "/8.jpeg",
+      "/yoga.PNG",
     duration: "45 min",
     difficulty: "Beginner",
     trainer: "Ishita Rao",

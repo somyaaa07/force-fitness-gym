@@ -26,7 +26,7 @@ const facilities = [
     title: "Strength Zone",
     desc: "45+ workout stations across a full range of strength and cardio equipment.",
     image:
-      "/12.jpeg",
+      "/19.PNG",
   },
   {
     title: "Recovery Suite",
@@ -75,7 +75,7 @@ export default function About() {
               /> */}
               <div className="relative aspect-[4/5] w-full overflow-hidden ">
                 <img
-                  src="/7.jpeg"
+                  src="/18.jpeg"
                   alt="Trainer coaching a member at Force Fitness Gym"
                   className="w-full h-full object-cover"
                 />
@@ -189,14 +189,14 @@ export default function About() {
                 key={f.title}
                 className="group relative overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-1.5"
               >
-                <div className="aspect-[4/5] w-full overflow-hidden">
+                <div className="aspect-[/3] w-full overflow-hidden">
                   <img
                     src={f.image}
                     alt={f.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/5" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/50 to-black/5" />
 
                 {/* same ghost-numeral device used in the manifesto, for a consistent signature */}
                 <span className="absolute top-3 left-4 font-teko text-5xl font-bold text-white/20 group-hover:text-primary/40 transition-colors duration-300 leading-none">

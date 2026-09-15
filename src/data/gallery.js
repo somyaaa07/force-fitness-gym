@@ -1,5 +1,5 @@
 export const galleryImages = [
-  { id: 1, category: "Gym", src: "/1.png", alt: "Gym weight rack" },
+  { id: 1, category: "Gym", src: "/19.PNG", alt: "Gym weight rack" },
   { id: 2, category: "Training", src: "/9.jpeg", alt: "Group training session" },
   { id: 3, category: "Equipment", src: "/12.jpeg", alt: "Gym equipment" },
   { id: 4, category: "Members", src: "/4.png", alt: "Member lifting weights" },
@@ -14,6 +14,9 @@ export const galleryImages = [
   { id: 13, category: "Gym", src: "/14.jpeg", alt: "Gym weight rack" },
   { id: 14, category: "Training", src: "/15.jpeg", alt: "Group training session" },
   { id: 15, category: "Equipment", src: "/16.jpeg", alt: "Gym equipment" },
+  { id: 16, category: "Gym", src: "/1.png", alt: "Gym weight rack" },
+  { id: 17, category: "Training", src: "/20.PNG", alt: "Group training session" },
+  
 
 
   // Videos
@@ -32,6 +35,14 @@ export const galleryImages = [
     src: "/4.MP4",
     poster: "/11.jpeg",
     alt: "Training session video",
+  },
+   {
+    id: 14,
+    category: "Gym",
+    type: "video",
+    src: "/3.MP4",
+    poster: "/20.PNG",
+    alt: "celebration video",
   },
 ];
 
