@@ -42,9 +42,9 @@ export default function Founders() {
 
         {/* Text side — all three founders */}
         <div className="flex flex-col gap-6 order-1 md:order-2">
-          <span className="eyebrow">The People Behind It</span>
+          <span className="eyebrow">The Team That Makes It Happen</span>
           <h2 className="section-heading">
-            Meet Our <span className="text-primary">Founders</span>
+            More About <span className="text-primary">Our Founders</span>
           </h2>
           <p className="font-inter text-body">
             Force Fitness Gym was started by three people who believed a

@@ -3,6 +3,7 @@ import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 import CTASection from "../components/CTASection";
 import Founders from "../components/Founders";
+
 const pillars = [
   {
     icon: Target,
@@ -25,20 +26,17 @@ const facilities = [
   {
     title: "Strength Zone",
     desc: "45+ workout stations across a full range of strength and cardio equipment.",
-    image:
-      "/19.PNG",
+    image: "/19.PNG",
   },
   {
     title: "Recovery Suite",
     desc: "Steam, sauna and ice bath therapy to help you recover faster between sessions.",
-    image:
-      "/8.jpeg",
+    image: "/8.jpeg",
   },
   {
     title: "Wellness & Lounge",
     desc: "On-site physiotherapy, an in-house cafe and a lounge area to unwind after training.",
-    image:
-      "/13.jpeg",
+    image: "/13.jpeg",
   },
 ];
 
@@ -46,6 +44,13 @@ const stats = [
   { value: "8,500+", label: "Sq.Ft. Facility" },
   { value: "40+", label: "Workout Stations" },
   { value: "10+", label: "Certified Coaches" },
+];
+
+// Update these image paths/names to match your actual founders
+const founderPhotos = [
+  { name: "Harsh Yadav", image: "/Harsh_yadav.jpeg" },
+  { name: "Sachin Tiwari", image: "/founder2.jpeg" },
+  { name: "Akash Yadav", image: "/akashyadav.jpeg" },
 ];
 
 export default function About() {
@@ -66,16 +71,11 @@ export default function About() {
       {/* Brand story — offset frame, text-led */}
       <section className="py-10 sm:py-24 overflow-hidden">
         <div className="container-x grid md:grid-cols-[1fr_1.05fr] gap-14 md:gap-16 items-center">
-          {/* Image with layered offset frame instead of a shaped mask */}
           <div className="relative order-2 md:order-1">
             <div className="relative max-w-lg mx-auto">
-              {/* <div
-                className="absolute -bottom-4 -left-4 w-full h-full border border-primary/40"
-                aria-hidden="true"
-              /> */}
               <div className="relative aspect-[4/5] w-full overflow-hidden ">
                 <img
-                  src="/18.jpeg"
+                  src="/team.jpeg"
                   alt="Trainer coaching a member at Force Fitness Gym"
                   className="w-full h-full object-cover"
                 />
@@ -91,7 +91,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Copy */}
           <div className="flex flex-col gap-6 order-1 md:order-2">
             <span className="eyebrow">Our Philosophy</span>
             <h2 className="section-heading">
@@ -131,7 +130,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission / Vision / Why — bordered panels with a top accent rule */}
+      {/* Mission / Vision / Why */}
       <section className="py-16 sm:py-24 bg-surface2">
         <div className="container-x">
           <SectionHeading
@@ -148,7 +147,6 @@ export default function About() {
                 key={item.title}
                 className="group relative flex flex-col gap-5 bg-surface border border-white/10 p-7 sm:p-8 pt-8 transition-all duration-300 hover:border-primary/50 hover:-translate-y-1"
               >
-                {/* top accent rule, expands on hover */}
                 <span className="absolute top-0 left-0 h-[3px] w-10 bg-primary/50 group-hover:w-full transition-all duration-500" />
 
                 <div className="flex items-start justify-between">
@@ -172,6 +170,38 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Meet The Founders — photo + name only */}
+      <section className="py-16 sm:py-24">
+        <div className="container-x flex flex-col items-center">
+          <SectionHeading
+            eyebrow="The People Behind It"
+            title="Meet The"
+            highlight="Founders"
+            className="mb-14"
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-x6l">
+            {founderPhotos.map((founder) => (
+              <div
+                key={founder.name}
+                className="group flex flex-col items-center gap-4"
+              >
+                <div className="relative w-full aspect-[3/] overflow-hidden border border-white/10 group-hover:border-primary/50 transition-all duration-300">
+                  <img
+                    src={founder.image}
+                    alt={founder.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+                <p className="font-teko text-xl sm:text-2xl text-heading uppercase tracking-wide">
+                  {founder.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Founders />
 
       {/* Facilities */}
@@ -198,7 +228,6 @@ export default function About() {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/50 to-black/5" />
 
-                {/* same ghost-numeral device used in the manifesto, for a consistent signature */}
                 <span className="absolute top-3 left-4 font-teko text-5xl font-bold text-white/20 group-hover:text-primary/40 transition-colors duration-300 leading-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>

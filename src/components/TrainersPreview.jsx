@@ -3,7 +3,7 @@ import TrainerCard from "./TrainerCard";
 import SectionHeading from "./SectionHeading";
 
 export default function TrainersPreview() {
-  const featured = trainers.slice(0, 4);
+  const featured = trainers.slice(0, 5);
 
   return (
     <section className="relative py-20 sm:py-28 bg-surface2/60 overflow-hidden">

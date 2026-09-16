@@ -36,9 +36,9 @@ export default function TrainerCard({ trainer, index = 0 }) {
         </h3>
 
         {/* specialization always visible on mobile / no-hover, small */}
-        <p className="font-rajdhani text-xs font-semibold text-primary uppercase tracking-widest mt-1 group-hover:opacity-0 transition-opacity duration-200">
+        {/* <p className="font-rajdhani text-xs font-semibold text-primary uppercase tracking-widest mt-1 group-hover:opacity-0 transition-opacity duration-200">
           {trainer.specialization}
-        </p>
+        </p> */}
 
         {/* experience, slides up on hover */}
         <p className="font-inter text-xs text-offwhite/70 max-h-0 group-hover:max-h-10 overflow-hidden transition-all duration-500 mt-0 group-hover:mt-2">

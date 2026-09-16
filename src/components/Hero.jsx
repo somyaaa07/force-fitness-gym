@@ -166,7 +166,7 @@ export default function Hero() {
 
             <video
               className="w-full h-full"
-              src="1.MP4"
+              src="/video.mp4"
               controls
               autoPlay
               playsInline

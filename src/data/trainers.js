@@ -33,22 +33,51 @@ export const trainers = [
     {
     id: "Aniket",
     name: "Ankiet ",
-    specialization: "Strength & Powerlifting",
+    specialization: "Trainer",
     category: "Strength",
     experience: "9+ Years Experience",
     image:
       "/aniket.PNG",
-    bio: "Kabir coaches raw strength through barbell cycles and competition prep for lifters chasing real numbers.",
+    bio: "Aniket coaches raw strength through barbell cycles and competition prep for lifters chasing real numbers.",
   },
     {
     id: "Aditya",
     name: "Aditya",
-    specialization: "Strength & Powerlifting",
+    specialization: "Trainer",
     category: "Strength",
-    experience: "9+ Years Experience",
+    experience: "5+ Years Experience",
     image:
       "/aditya.PNG",
-    bio: "Kabir coaches raw strength through barbell cycles and competition prep for lifters chasing real numbers.",
+    bio: "Aditya coaches raw strength through barbell cycles and competition prep for lifters chasing real numbers.",
   },
- 
+      {
+    id: "Rishi Mehta",
+    name: "Rishi Mehta",
+    specialization: "Trainer",
+    category: "Strength",
+    experience: "6+ Years Experience",
+    image:
+      "/rishi_mehta.jpeg",
+    bio: "Aditya coaches raw strength through barbell cycles and competition prep for lifters chasing real numbers.",
+  },
+    {
+    id: "Ritik",
+    name: "Ritik",
+    specialization: "Trainer",
+    category: "Strength",
+    experience: "6+ Years Experience",
+    image:
+      "/ritik.jpeg",
+    bio: "Aditya coaches raw strength through barbell cycles and competition prep for lifters chasing real numbers.",
+  },
+  {
+    id: "Ishu Pal",
+    name: "Ishu Pal",
+    specialization: "Trainer",
+    category: "Strength",
+    experience: "6+ Years Experience",
+    image:
+      "/ishu_pal.jpeg",
+    bio: "Aditya coaches raw strength through barbell cycles and competition prep for lifters chasing real numbers.",
+  },
 ];
